@@ -1,0 +1,463 @@
+# 5) Linux Temelleri
+
+## Linux Nedir?
+
+Linux, açık kaynak kodlu, Unix benzeri bir işletim sistemi çekirdeğidir. Linux tabanlı işletim sistemleri bilgisayarların, sunucuların ve çeşitli cihazların donanım ve yazılım kaynaklarını yönetmek için kullanılır.
+
+Linux'un en önemli özelliklerinden biri **açık kaynaklı** olmasıdır. Kaynak kodu geliştiriciler tarafından incelenebilir, değiştirilebilir ve geliştirilebilir.
+
+Linux özellikle;
+
+- Yazılım geliştirme
+- Sunucu yönetimi
+- Siber güvenlik
+- Ağ yönetimi
+- Bulut sistemleri
+- DevOps
+- Gömülü sistemler
+
+gibi alanlarda yaygın olarak kullanılmaktadır.
+
+Linux tek bir işletim sistemi değildir. **Ubuntu, Debian, Fedora ve Arch Linux** gibi farklı Linux dağıtımları bulunmaktadır. Bu dağıtımlar Linux çekirdeğini kullanır ancak kullandıkları araçlar ve paket yönetim sistemleri farklı olabilir.
+
+---
+## Linux Temelleri ve Siber Güvenlik İlişkisi
+
+Linux temellerini bilmek, **siber güvenlik** alanında çalışmak için oldukça önemlidir. Bunun temel nedeni, birçok sunucunun, ağ cihazının, güvenlik aracının ve siber güvenlik platformunun Linux tabanlı olmasıdır.
+
+Siber güvenlik uzmanları Linux'u kullanarak sistemleri analiz edebilir, kullanıcı ve dosya izinlerini kontrol edebilir, çalışan işlemleri inceleyebilir ve servislerin durumunu yönetebilir.
+
+### Terminal Komutları ve Siber Güvenlik
+
+Linux'ta terminal kullanımı, siber güvenlik çalışmalarının önemli bir parçasıdır. Güvenlik uzmanları grafiksel arayüz yerine terminal üzerinden sistem hakkında hızlı bir şekilde bilgi toplayabilir.
+
+Örneğin:
+
+- `ls` → Dosya ve klasörleri incelemek için
+- `cd` → Sistem içerisinde farklı dizinlere geçmek için
+- `grep` → Log dosyalarında belirli bilgileri aramak için
+- `mkdir` → Dizin oluşturmak için
+- `chmod` → Dosya ve klasör izinlerini düzenlemek için
+- `top` → Çalışan işlemleri ve sistem kaynaklarını takip etmek için
+
+kullanılabilir.
+
+Özellikle `grep` komutu, sistem ve güvenlik loglarında belirli IP adreslerini, kullanıcı adlarını veya hata mesajlarını aramak için oldukça kullanışlıdır.
+
+Örneğin:
+
+```bash
+grep "failed" /var/log/auth.log
+
+## Terminal Komutları
+
+Linux'ta birçok işlem **terminal** üzerinden komutlar kullanılarak gerçekleştirilebilir. Terminal sayesinde dosya ve klasörleri yönetebilir, program çalıştırabilir, dosyalar içerisinde arama yapabilir ve sistem kaynaklarını kontrol edebiliriz.
+
+### `ls`
+
+`ls`, bulunduğumuz dizindeki dosya ve klasörleri listelemek için kullanılan bir terminal komutudur.
+
+```bash
+ls
+```
+
+Daha ayrıntılı dosya bilgilerini görmek için:
+
+```bash
+ls -l
+```
+
+kullanılabilir.
+
+---
+
+### `cd`
+
+`cd` (**Change Directory**), dizinler arasında geçiş yapmak için kullanılır.
+
+Örneğin:
+
+```bash
+cd Documents
+```
+
+komutu ile `Documents` klasörüne girilir.
+
+Bir üst dizine çıkmak için:
+
+```bash
+cd ..
+```
+
+kullanılır.
+
+---
+
+### `grep`
+
+`grep`, dosyaların veya komut çıktılarının içerisinde belirli bir kelime veya ifadeyi aramak için kullanılır.
+
+Örneğin:
+
+```bash
+grep "Linux" notlar.txt
+```
+
+Bu komut `notlar.txt` dosyasının içerisinde **Linux** kelimesini arar ve bulunan satırları gösterir.
+
+`grep`, özellikle büyük dosyalar içerisinde belirli bilgileri hızlı bir şekilde bulmak için oldukça kullanışlıdır.
+
+---
+
+### `mkdir`
+
+`mkdir` (**Make Directory**), yeni bir klasör oluşturmak için kullanılır.
+
+Örneğin:
+
+```bash
+mkdir proje
+```
+
+Bu komut `proje` adında yeni bir klasör oluşturur.
+
+---
+
+### `chmod`
+
+`chmod` (**Change Mode**), dosya ve klasörlerin erişim izinlerini değiştirmek için kullanılır.
+
+Örneğin:
+
+```bash
+chmod +x script.sh
+```
+
+komutu `script.sh` dosyasına çalıştırma izni verir.
+
+Linux'ta temel dosya izinleri:
+
+- `r` → **Read** → Okuma
+- `w` → **Write** → Yazma
+- `x` → **Execute** → Çalıştırma
+
+şeklindedir.
+
+---
+
+### `top`
+
+`top`, Linux sisteminde çalışan işlemleri ve sistem kaynaklarının kullanımını anlık olarak görüntülemek için kullanılır.
+
+```bash
+top
+```
+
+Bu komut ile;
+
+- CPU kullanımı
+- RAM kullanımı
+- Çalışan işlemler
+- İşlem numaraları (PID)
+- Sistem yükü
+
+gibi bilgiler görüntülenebilir.
+
+`top` komutundan çıkmak için **`q`** tuşuna basılır.
+
+---
+
+## Paket Yönetimi
+
+Linux'ta programların **kurulması, kaldırılması, güncellenmesi ve yönetilmesi** için paket yöneticileri kullanılır.
+
+Paket yöneticileri, programların çalışması için gerekli olan diğer dosya ve kütüphaneleri yani **bağımlılıkları** da yönetir.
+
+Linux dağıtımlarına göre farklı paket yöneticileri kullanılmaktadır.
+
+| Paket yöneticisi | Kullanıldığı dağıtımlar |
+|---|---|
+| `apt` | Ubuntu, Debian |
+| `pacman` | Arch Linux |
+| `dnf` | Fedora |
+
+### APT
+
+`apt`, özellikle **Ubuntu ve Debian** gibi Debian tabanlı Linux dağıtımlarında kullanılan paket yönetim sistemidir.
+
+Paket listesini güncellemek için:
+
+```bash
+sudo apt update
+```
+
+Bir program yüklemek için:
+
+```bash
+sudo apt install git
+```
+
+Bir programı kaldırmak için:
+
+```bash
+sudo apt remove git
+```
+
+Kurulu paketleri güncellemek için:
+
+```bash
+sudo apt upgrade
+```
+
+kullanılır.
+
+---
+
+### Pacman
+
+`pacman`, özellikle **Arch Linux** ve Arch tabanlı dağıtımlarda kullanılan paket yöneticisidir.
+
+Bir program yüklemek:
+
+```bash
+sudo pacman -S git
+```
+
+Bir programı kaldırmak:
+
+```bash
+sudo pacman -R git
+```
+
+Sistemdeki paketleri güncellemek:
+
+```bash
+sudo pacman -Syu
+```
+
+şeklinde yapılabilir.
+
+---
+
+### DNF
+
+`dnf`, özellikle **Fedora** gibi RPM tabanlı Linux dağıtımlarında kullanılan paket yöneticisidir.
+
+Bir program yüklemek:
+
+```bash
+sudo dnf install git
+```
+
+Bir programı kaldırmak:
+
+```bash
+sudo dnf remove git
+```
+
+Paketleri güncellemek:
+
+```bash
+sudo dnf update
+```
+
+şeklinde yapılabilir.
+
+### `sudo` Nedir?
+
+`sudo`, bir komutu **yönetici yetkileriyle** çalıştırmak için kullanılır.
+
+Örneğin:
+
+```bash
+sudo apt install git
+```
+
+komutunda Git programının kurulması yönetici yetkileriyle gerçekleştirilir.
+
+---
+
+## Dosya İzinleri
+
+Linux'ta dosya ve klasörlerin **kimler tarafından okunabileceği, değiştirilebileceği veya çalıştırılabileceği** dosya izinleri ile belirlenir.
+
+Dosya izinleri özellikle çok kullanıcılı sistemlerde güvenlik açısından önemlidir. Kullanıcıların hangi dosyalara erişebileceğini ve bu dosyalar üzerinde hangi işlemleri yapabileceğini kontrol etmeyi sağlar.
+
+Linux'taki temel izinler şunlardır:
+
+| İzin | İngilizce | Anlamı |
+|---|---|---|
+| `r` | Read | Okuma |
+| `w` | Write | Yazma |
+| `x` | Execute | Çalıştırma |
+
+Dosya izinlerini görmek için:
+
+```bash
+ls -l
+```
+
+komutu kullanılır.
+
+Örneğin:
+
+```text
+-rwxr-xr--
+```
+
+şeklinde bir çıktı görülebilir.
+
+İzinler üç farklı kullanıcı grubu için değerlendirilir:
+
+- **Owner** → Dosyanın sahibi
+- **Group** → Dosyanın ait olduğu grup
+- **Others** → Diğer kullanıcılar
+
+Örneğin `rwx` ifadesi;
+
+- `r` → Dosyayı okuyabilir.
+- `w` → Dosyayı değiştirebilir.
+- `x` → Dosyayı çalıştırabilir.
+
+anlamına gelir.
+
+### chmod ile İzin Değiştirme
+
+Dosya izinlerini değiştirmek için `chmod` komutu kullanılır.
+
+Örneğin:
+
+```bash
+chmod +x script.sh
+```
+
+dosyaya çalıştırma izni ekler.
+
+Sayısal izinler de kullanılabilir:
+
+```bash
+chmod 755 script.sh
+```
+
+Buradaki `755`;
+
+- `7` → Dosya sahibi: okuma + yazma + çalıştırma
+- `5` → Grup: okuma + çalıştırma
+- `5` → Diğer kullanıcılar: okuma + çalıştırma
+
+izinlerine karşılık gelir.
+
+Dosya izinleri sayesinde sistemdeki kullanıcıların dosyalara erişimi kontrol edilir ve sistem güvenliği artırılır.
+
+---
+
+## Servisler (`systemctl`)
+
+Linux'ta arka planda çalışan ve belirli görevleri yerine getiren programlara **servis (service)** denir.
+
+Örneğin;
+
+- Web sunucuları
+- Veritabanı servisleri
+- SSH
+- Ağ servisleri
+- Sistem servisleri
+
+Linux üzerinde servis olarak çalışabilir.
+
+Servisler genellikle arka planda çalışır ve belirli görevleri yerine getirir.
+
+### systemd Nedir?
+
+Modern Linux dağıtımlarının çoğunda sistem servislerini ve arka plan işlemlerini yönetmek için **systemd** kullanılır.
+
+`systemctl` ise **systemd tarafından yönetilen servisleri kontrol etmek** için kullanılan komut satırı aracıdır.
+
+### Servisin Durumunu Görmek
+
+Bir servisin çalışıp çalışmadığını kontrol etmek için:
+
+```bash
+systemctl status servis_adi
+```
+
+kullanılır.
+
+Örneğin:
+
+```bash
+systemctl status ssh
+```
+
+SSH servisinin durumunu gösterir.
+
+### Servis Başlatmak
+
+Bir servisi başlatmak için:
+
+```bash
+sudo systemctl start servis_adi
+```
+
+kullanılır.
+
+### Servis Durdurmak
+
+Bir servisi durdurmak için:
+
+```bash
+sudo systemctl stop servis_adi
+```
+
+kullanılır.
+
+### Servisi Yeniden Başlatmak
+
+Bir servisi yeniden başlatmak için:
+
+```bash
+sudo systemctl restart servis_adi
+```
+
+kullanılır.
+
+Bu işlem özellikle servis üzerinde yapılan yapılandırma değişikliklerinden sonra kullanılabilir.
+
+### Servisin Açılışta Otomatik Başlaması
+
+Bir servisin bilgisayar açıldığında otomatik olarak başlamasını sağlamak için:
+
+```bash
+sudo systemctl enable servis_adi
+```
+
+kullanılır.
+
+Otomatik başlamasını kapatmak için:
+
+```bash
+sudo systemctl disable servis_adi
+```
+
+kullanılabilir.
+
+### Temel `systemctl` Komutları
+
+| Komut | Görevi |
+|---|---|
+| `systemctl status` | Servisin durumunu gösterir |
+| `systemctl start` | Servisi başlatır |
+| `systemctl stop` | Servisi durdurur |
+| `systemctl restart` | Servisi yeniden başlatır |
+| `systemctl enable` | Açılışta otomatik başlatır |
+| `systemctl disable` | Otomatik başlamasını kapatır |
+
+---
+
+## Genel Özet
+
+Linux temellerinde **terminal komutları, paket yönetimi, dosya izinleri ve servis yönetimi** önemli konulardır.
+
+Terminal komutları ile dosya ve klasörler yönetilebilir. Paket yöneticileri ile programlar kurulabilir, kaldırılabilir ve güncellenebilir. Dosya izinleri ile kullanıcıların dosyalara erişimleri kontrol edilir. Servisler ise sistemin arka planında çalışan programların yönetilmesini sağlar.
+
+Bu temel bilgiler; **yazılım geliştirme, sunucu yönetimi, DevOps, bulut teknolojileri ve siber güvenlik** gibi alanlarda Linux kullanımı için önemli bir başlangıç oluşturur.
