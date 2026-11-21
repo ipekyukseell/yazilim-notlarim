@@ -1,0 +1,243 @@
+# 10. Yazılım Mimarisi Temelleri (Software Architecture Fundamentals)
+
+## 1. Monolith vs Microservice (Monolitik ve Mikroservis Mimarisi)
+
+Yazılım mimarisi, bir uygulamanın hangi parçalardan oluşacağını ve bu parçaların birbiriyle nasıl iletişim kuracağını belirler.
+
+### Monolithic Architecture (Monolitik Mimari)
+
+Monolitik mimari, bir uygulamanın bütün bileşenlerinin tek bir proje ve uygulama içerisinde geliştirilmesidir.
+
+Örneğin bir alışveriş uygulamasında:
+- Kullanıcı yönetimi
+- Ürün yönetimi
+- Sipariş işlemleri
+- Ödeme sistemi
+
+Bu özelliklerin tamamı tek bir uygulama içerisinde bulunur.
+
+**Avantajları:**
+- Geliştirilmesi ve yönetilmesi başlangıçta daha kolaydır.
+- Küçük projeler için uygundur.
+- Bütün sistem tek bir yapı içerisinde çalışır.
+
+**Dezavantajları:**
+- Proje büyüdükçe kodların yönetimi zorlaşır.
+- Bir bölümdeki hata bütün sistemi etkileyebilir.
+- Uygulamanın tamamını güncellemek gerekebilir.
+
+### Microservice Architecture (Mikroservis Mimarisi)
+
+Mikroservis mimarisi, büyük bir uygulamanın küçük ve bağımsız servislerden oluşmasıdır.
+
+Örneğin bir alışveriş uygulamasında:
+- Kullanıcı servisi
+- Ürün servisi
+- Sipariş servisi
+- Ödeme servisi
+
+Her servis kendi görevini yerine getirir ve diğer servislerle iletişim kurabilir.
+
+**Avantajları:**
+- Servisler birbirinden bağımsız geliştirilebilir.
+- Bir servisteki hata diğer servisleri her zaman etkilemez.
+- Her servis ayrı ayrı ölçeklendirilebilir.
+
+**Dezavantajları:**
+- Yönetimi ve geliştirilmesi daha karmaşıktır.
+- Servisler arası iletişim dikkatli yönetilmelidir.
+- Dağıtım ve bakım maliyetleri artabilir.
+
+### Monolith ve Microservice Arasındaki Fark
+
+| Monolith | Microservice |
+|---|---|
+| Tek bir uygulamadır. | Birden fazla bağımsız servisten oluşur. |
+| Bütün özellikler aynı yapıdadır. | Her servis farklı bir görev yapar. |
+| Yönetimi başlangıçta kolaydır. | Yönetimi daha karmaşıktır. |
+| Küçük projelere uygundur. | Büyük ve gelişen projelere uygundur. |
+
+**Kısaca:** Monolith = Tek büyük uygulama. Microservice = Birbirinden bağımsız küçük servisler.
+
+---
+
+## 2. MVC ve MVVM Mimari Desenleri (Architectural Patterns)
+
+Mimari desenler, yazılım geliştirirken kodların düzenli, anlaşılır ve yönetilebilir olmasını sağlayan tasarım yaklaşımlarıdır.
+
+### MVC (Model - View - Controller)
+
+MVC, uygulamayı üç temel bölüme ayıran bir mimari desendir.
+
+**1. Model (Veri):**
+- Uygulamanın verilerini temsil eder.
+- Veritabanı işlemleri ve iş kurallarıyla ilgilenir.
+
+**2. View (Görünüm):**
+- Kullanıcının gördüğü arayüzdür.
+- Ekrandaki butonlar, yazılar ve formlar bu bölümdedir.
+
+**3. Controller (Kontrolcü):**
+- Kullanıcıdan gelen istekleri karşılar.
+- Gerekli işlemleri başlatır ve Model ile View arasındaki iletişimi yönetir.
+
+**Örnek:**
+
+Bir öğrenci bilgi sisteminde öğrenci notlarını görüntülemek istediğimizi düşünelim.
+
+- Model: Öğrencinin not bilgilerini veritabanından alır.
+- View: Notları ekranda gösterir.
+- Controller: Kullanıcının not görüntüleme isteğini yönetir.
+
+**Kısaca:**
+- Model = Veri
+- View = Görünüm
+- Controller = Kontrol ve yönetim
+
+### MVVM (Model - View - ViewModel)
+
+MVVM, özellikle modern kullanıcı arayüzü uygulamalarında kullanılan bir mimari desendir.
+
+Üç temel bölümden oluşur:
+
+**1. Model:**
+- Uygulamanın verilerini ve iş kurallarını içerir.
+
+**2. View:**
+- Kullanıcının gördüğü arayüzdür.
+- Ekran tasarımını oluşturur.
+
+**3. ViewModel:**
+- Model ile View arasında bağlantı kurar.
+- Arayüzde gösterilecek verileri hazırlar.
+- Kullanıcı işlemlerine göre gerekli verileri günceller.
+
+**Örnek:**
+
+Bir hava durumu uygulamasını düşünelim.
+
+- Model: Hava durumu bilgilerini tutar.
+- View: Sıcaklık ve hava durumunu ekranda gösterir.
+- ViewModel: Modelden aldığı sıcaklık bilgisini View'a aktarır.
+
+### MVC ve MVVM Arasındaki Fark
+
+| MVC | MVVM |
+|---|---|
+| Model, View, Controller bulunur. | Model, View, ViewModel bulunur. |
+| Controller kullanıcı isteklerini yönetir. | ViewModel arayüzün verilerini yönetir. |
+| Controller ile View arasında iletişim vardır. | Genellikle data binding kullanılır. |
+| Web uygulamalarında yaygındır. | Mobil ve modern arayüz uygulamalarında yaygındır. |
+
+**Kısaca:** MVC'de Controller, MVVM'de ViewModel bulunur.
+
+---
+
+## 3. State Management (Durum Yönetimi) Nedir?
+
+State Management, bir uygulamanın o anki durumunu (state) yönetme işlemidir.
+
+State, uygulamanın çalışırken değişebilen verilerini ifade eder.
+
+Örneğin:
+- Kullanıcının giriş yapıp yapmadığı
+- Sepetteki ürün sayısı
+- Kullanıcının seçtiği tema (açık veya koyu)
+- Bir butona basılıp basılmadığı
+
+Bu bilgilerin saklanması, güncellenmesi ve arayüzde doğru şekilde gösterilmesi gerekir.
+
+### State Management Nasıl Çalışır?
+
+Örneğin bir alışveriş uygulamasında sepete ürün eklediğimizi düşünelim.
+
+1. Kullanıcı sepete bir ürün ekler.
+2. Sepetteki ürün sayısı güncellenir.
+3. Uygulamanın state bilgisi değişir.
+4. Ekrandaki sepet sayısı yeni duruma göre güncellenir.
+
+### State Management Neden Önemlidir?
+
+- Uygulamadaki verilerin düzenli yönetilmesini sağlar.
+- Ekranların güncel kalmasına yardımcı olur.
+- Birden fazla bileşenin aynı veriyi kullanmasını kolaylaştırır.
+- Uygulamanın daha kontrollü çalışmasını sağlar.
+
+**Örnek:** Bir alışveriş uygulamasında sepete 2 ürün eklediğimizde sepet simgesinde 2 yazması State Management örneğidir.
+
+**Kısaca:** State Management = Uygulamanın değişen durumlarını ve verilerini yönetme işlemidir.
+
+---
+
+## 4. Katmanlı Mimari (Layered Architecture)
+
+Katmanlı mimari, yazılımın farklı görevleri olan bölümlere ayrılmasıdır.
+
+Amaç, her katmanın kendi sorumluluğunu yerine getirmesini ve kodların daha düzenli olmasını sağlamaktır.
+
+Yaygın bir örnek:
+
+### 1. Controller (Kontrol Katmanı)
+
+- Kullanıcıdan gelen istekleri karşılar.
+- İstekleri ilgili Service katmanına iletir.
+- Sonucu kullanıcıya döndürür.
+
+### 2. Service (İş Mantığı Katmanı)
+
+- Uygulamanın temel iş kurallarını içerir.
+- Gerekli kontrolleri ve hesaplamaları yapar.
+- Repository katmanıyla iletişim kurar.
+
+### 3. Repository (Veri Erişim Katmanı)
+
+- Veritabanı işlemlerini gerçekleştirir.
+- Veri ekleme, silme, güncelleme ve listeleme işlemlerini yönetir.
+- Service katmanının veriye erişmesini sağlar.
+
+### Katmanlı Mimari Nasıl Çalışır?
+
+Örneğin bir öğrenci kayıt sisteminde yeni öğrenci eklemek istediğimizi düşünelim.
+
+1. Controller: Kullanıcıdan öğrenci kayıt isteğini alır.
+2. Service: Öğrenci bilgilerinin geçerli olup olmadığını kontrol eder.
+3. Repository: Öğrenci bilgilerini veritabanına kaydeder.
+4. Sonuç Controller üzerinden kullanıcıya iletilir.
+
+**İşlem sırası:**
+
+Controller → Service → Repository → Database
+
+### Katmanlı Mimarinin Avantajları
+
+- Kodların düzenli olmasını sağlar.
+- Her katmanın görevi bellidir.
+- Kod tekrarını azaltmaya yardımcı olur.
+- Bakım ve geliştirme işlemlerini kolaylaştırır.
+- Test yazmayı kolaylaştırır.
+
+**Kısaca:**
+- Controller = İstekleri karşılar.
+- Service = İşlemleri ve kuralları yönetir.
+- Repository = Veritabanı işlemlerini yapar.
+
+---
+
+## 5. Genel Değerlendirme
+
+Yazılım mimarisi, bir projenin nasıl oluşturulacağını ve bileşenlerinin nasıl çalışacağını belirler.
+
+Bu konudaki temel kavramlar:
+
+| Kavram | Açıklama |
+|---|---|
+| Monolith | Bütün özelliklerin tek uygulamada bulunması |
+| Microservice | Uygulamanın bağımsız servislere ayrılması |
+| MVC | Model, View ve Controller yapısı |
+| MVVM | Model, View ve ViewModel yapısı |
+| State Management | Uygulamanın değişen durumlarının yönetilmesi |
+| Layered Architecture | Yazılımın farklı sorumluluklara sahip katmanlara ayrılması |
+| Controller | Kullanıcı isteklerini karşılar. |
+| Service | İş mantığını yönetir. |
+| Repository | Veritabanı işlemlerini yönetir. |
+
